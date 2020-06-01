@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Dan's Book Shop</title>
+</head>
+<body onload="onInit()">
+    <container class="container">
+        <div class="header">
+            <h1>Welcome to Dan's Bookshop!</h1>
+        </div>
+        <div class="content">
+            <div class="add-new">
+                <input name="new-book-book-name" type="text" placeholder="Book name?" class="new-book-book-name">
+                <input name="new-book-price" type="number" placeholder="Book price?" class="new-book-price">
+                <button class="new-book-button" onclick="onAddNewBook()">Add new book</button>
+            </div>
+
+
+            <!-- <p class="add-new-book" onclick="onAddNewBook()">Add a new book</p> -->
+            <table class="books-list">
+
+
+            </table>
+        </div>
+        <div class="footer">&copy;DH</div>
+
+    </container>
+
+    <!-- Modal section -->
+    <div class="bg-modal hide" >
+        <div class="book-details">
+
+        </div>
+    </div>
+
+    <script src="js/storage-service.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/book-controller.js"></script>
+    <script src="js/book-service.js"></script>
+</body>
+
+</html>
