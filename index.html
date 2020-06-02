@@ -3,35 +3,55 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/main.css">
-    <title>Dan's Book Shop</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title data-trans="pageTitle">Dan's Book Shop</title>
 </head>
+
 <body onload="onInit()">
-    <container class="container">
-        <div class="header">
-            <h1>Welcome to Dan's Bookshop!</h1>
+    <container class="custom-container container-fluid">
+        <div class="header row-fluid">
+            <h1 data-trans="pageTitle">Welcome to Dan's Bookshop!</h1>
+            <select onchange="onSetLang(this.value)">
+                <option value="en">English</option>
+                <option value="he">עברית</option>
+            </select>
         </div>
         <div class="content">
             <div class="add-new">
-                <input name="new-book-book-name" type="text" placeholder="Book name?" class="new-book-book-name">
-                <input name="new-book-price" type="number" placeholder="Book price?" class="new-book-price">
-                <button class="new-book-button" onclick="onAddNewBook()">Add new book</button>
+                <input name="new-book-book-name" type="text" placeholder="Book name?" class="new-book-book-name"
+                    data-trans="new-book-book-name">
+                <input name="new-book-price" type="number" placeholder="Book price?" class="new-book-price"
+                    data-trans="new-book-price">
+                <button class="new-book-button" onclick="onAddNewBook()" data-trans="new-book-button">Add new
+                    book</button>
             </div>
 
 
             <!-- <p class="add-new-book" onclick="onAddNewBook()">Add a new book</p> -->
-            <table class="books-list">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th data-trans="id">Id</th>
+                        <th onclick="onSortby('name')" style="cursor:pointer;" ><span data-trans="book-title">Title</span> &#9660;</th>
+                        <th onclick="onSortby('price')" style="cursor:pointer;" ><span data-trans="book-price">Price</span> &#9660;</th>
+                        <th colspan="3" data-trans="actions">Actions</th>
+                    </tr>
+                </thead >
+                <tbody class="books-list table-hover">
+
+                </tbody>
 
 
             </table>
         </div>
-        <div class="footer">&copy;DH</div>
+        <div class="footer">&copy;<span data-trans="copyright">DH</span></div>
 
     </container>
 
     <!-- Modal section -->
-    <div class="bg-modal hide" >
+    <div class="bg-modal hide">
         <div class="book-details">
 
         </div>
@@ -40,7 +60,19 @@
     <script src="js/storage-service.js"></script>
     <script src="js/util.js"></script>
     <script src="js/book-controller.js"></script>
+    <script src="js/i18n-service.js"></script>
     <script src="js/book-service.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

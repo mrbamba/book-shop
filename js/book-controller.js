@@ -3,6 +3,8 @@
 function onInit() {
     createBooks();
     renderBooks()
+    doTrans();
+
 }
 
 function renderBooks() {
@@ -14,18 +16,20 @@ function renderBooks() {
          <td>${book.id}</td>
          <td>${book.name}</td>
          <td>${getCurrency()}${book.price}</td>
-         <td><button onclick="onReadBook('${book.id}')">Read</button></td>
-         <td><button onclick="onUpdateBook('${book.id}')">Update</button></td>
-         <td><button onclick="onRemoveBook('${book.id}')">Delete</button></td>
+         <td><button class="btn btn-primary" onclick="onReadBook('${book.id}')" data-trans="read">Read</button></td>
+         <td><button class="btn btn-warning" onclick="onUpdateBook('${book.id}')" data-trans="update">Update</button></td>
+         <td><button class="btn btn-danger" onclick="onRemoveBook('${book.id}')" data-trans="delete">Delete</button></td>
      </tr>`
     })
-    strHtml.unshift(`<tr>
-        <th>Id</th>
-        <th onclick="onSortby('name')" style="cursor:pointer;">Title &#9660;</th>
-        <th onclick="onSortby('price')" style="cursor:pointer;">Price &#9660;</th>
-        <th colspan="3">Actions</th>
-    </tr>`)
+    // strHtml.unshift(`<tr>
+    //     <th data-trans="id">Id</th>
+    //     <th onclick="onSortby('name')" style="cursor:pointer;" ><span data-trans="book-title">Title</span> &#9660;</th>
+    //     <th onclick="onSortby('price')" style="cursor:pointer;" ><span data-trans="book-price">Price</span> &#9660;</th>
+    //     <th colspan="3" data-trans="actions">Actions</th>
+    // </tr>`)
     document.querySelector('.books-list').innerHTML = strHtml.join('');
+    doTrans();
+
 }
 
 function onRemoveBook(bookId) {
@@ -55,12 +59,14 @@ function onReadBook(bookId){
     <h1>${bookName}</h1>
     <p><img src="img/${bookName}.jpg" alt="${bookName}">
     </p>
-    <p>Price:${getCurrency()}${getBookPrice(bookId)}</p>
-    <h3>Rate ${bookName}</h3>
-    <p><button onclick="onChangeRate('${bookId}',-1)">-</button>${getBookRate(bookId)}<button onclick="onChangeRate('${bookId}',1)">+</button>
+    <p><span data-trans="book-price">Price</span>:${getCurrency()}${getBookPrice(bookId)}</p>
+    <h3><span data-trans="rate">Rate</span> ${bookName}</h3>
+    <p><button onclick="onChangeRate('${bookId}',-1)">-</button> ${getBookRate(bookId)} <button onclick="onChangeRate('${bookId}',1)">+</button>
 
     </p>`
     document.querySelector('.book-details').innerHTML=strHtml;
+    doTrans();
+
 }
 function onCloseModal(){
     document.querySelector('.bg-modal').classList.toggle("hide");
@@ -78,4 +84,13 @@ function onSortby(sortBy){
     
     // createBooks()
     renderBooks()
+}
+
+function onSetLang(lang) {
+    setLang(lang);
+    // if lang is hebrew add RTL class to document.body
+    if (lang === 'he') document.body.classList.add('rtl');
+    else document.body.classList.remove('rtl');
+    doTrans();
+    renderBooks();
 }

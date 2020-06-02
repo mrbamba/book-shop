@@ -6,7 +6,7 @@ body {
     margin: 0;
 }
 
-.container {
+.custom-container {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -70,6 +70,14 @@ td {
 button {
     cursor: pointer;
 }
+
+body.rtl {
+    direction: rtl;
+}
+
+/* body.rtl .btn-delete {
+    float: left;
+}  */
 
 
 

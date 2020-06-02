@@ -121,6 +121,9 @@ function _getBookIndex(bookId) {
 function getCurrency() {
     return gCurrency;
 }
+function setCurrency(symbol){
+    gCurrency=symbol;
+}
 
 function getBookPrice(bookId) {
     var bookIndex = _getBookIndex(bookId);
