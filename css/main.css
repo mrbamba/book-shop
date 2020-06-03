@@ -13,6 +13,7 @@ body {
     flex-direction: column;
     margin: 0;
     text-align: center;
+    padding: 0px;
 }
 
 .header {
@@ -28,6 +29,7 @@ body {
 
 .add-new{
     padding-top: 25px;
+    padding-bottom: 25px;
 }
 .footer {
     flex-grow: .15;
@@ -36,13 +38,14 @@ body {
     color: white;
 }
 
-table {
+.main-table {
     background-color: blanchedalmond;
     padding: 10px;
     border: 1px solid rgb(210, 209, 209);
     border-collapse: collapse;
     text-align: center;
-    margin: 25px auto;
+    margin: auto;
+    
 }
 
 th {

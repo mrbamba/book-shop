@@ -21,12 +21,6 @@ function renderBooks() {
          <td><button class="btn btn-danger" onclick="onRemoveBook('${book.id}')" data-trans="delete">Delete</button></td>
      </tr>`
     })
-    // strHtml.unshift(`<tr>
-    //     <th data-trans="id">Id</th>
-    //     <th onclick="onSortby('name')" style="cursor:pointer;" ><span data-trans="book-title">Title</span> &#9660;</th>
-    //     <th onclick="onSortby('price')" style="cursor:pointer;" ><span data-trans="book-price">Price</span> &#9660;</th>
-    //     <th colspan="3" data-trans="actions">Actions</th>
-    // </tr>`)
     document.querySelector('.books-list').innerHTML = strHtml.join('');
     doTrans();
 
